@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Sign In</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle color="danger" style="text-align: center">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        Please disable insecure content blocking from the browser to make the app running
+      </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  <!-- Login form -->
+  <form [formGroup]="validationsForm" (ngSubmit)="loginSubmit(validationsForm.value)">
+    <ion-item>
+      <ion-label position="stacked" color="primary">
+        <ion-icon name="mail"></ion-icon> Email
+      </ion-label>
+      <ion-input type="email" formControlName="email" clearInput="on" placeholder="Enter Email" #Email></ion-input>
+    </ion-item>
+    <div padding-start>
+      <ng-container *ngFor="let validation of validationMessages.email">
+        <div class="error-message" *ngIf="validationsForm.get('email').hasError(validation.type) && (validationsForm.get('email').dirty || validationsForm.get('email').touched)">
+          <ion-text>
+            <ion-icon name="md-information-circle"></ion-icon> {{ validation.message }}
+          </ion-text>
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="stacked" color="primary">
+        <ion-icon name="lock"></ion-icon> Password
+      </ion-label>
+      <ion-input type="password" formControlName="password" clearInput="on" placeholder="Enter Password" #Password></ion-input>
+    </ion-item>
+    <div padding-start>
+      <ng-container *ngFor="let validation of validationMessages.password">
+        <div class="error-message" *ngIf="validationsForm.get('password').hasError(validation.type) && (validationsForm.get('password').dirty || validationsForm.get('password').touched)">
+          <ion-text><ion-icon name="md-information-circle"></ion-icon> {{ validation.message }}</ion-text>
+        </div>
+      </ng-container>
+    </div>
+
+    <div margin-top>
+      <ion-button size="medium" expand="full" shape="round" color="primary" type="submit" [disabled]="!validationsForm.valid" tappable>
+        <ion-icon name="log-in"></ion-icon>
+        Sign in
+      </ion-button>
+    </div>
+  </form>
+
+  <!-- Other links -->
+  <div margin-top padding-top>
+    <ion-button size="medium" expand="full" shape="round" color="primary" type="submit" (click)="goToRegister()" tappable>
+      Sign Up
+    </ion-button>
+  </div>
+</ion-content>

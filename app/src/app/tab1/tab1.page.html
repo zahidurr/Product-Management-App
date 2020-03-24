@@ -1,0 +1,138 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Items
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="add()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+        Add New
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle color="danger" style="text-align: center">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        Please disable insecure content blocking from the browser to make the app running
+      </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title color="primary" style="text-align: center">Welcome!</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+  <ion-card *ngFor="let item of items">
+    <ion-card-content style="font-size: x-large;">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="3">
+            <strong>Title:</strong>
+          </ion-col>
+          <ion-col style="font-size: larger;">
+            {{ item.title }}
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="3">
+            <strong>Small titl1:</strong>
+          </ion-col>
+          <ion-col>
+            {{ item.small_titl1 }}
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="3">
+            <strong>Small tip1:</strong>
+          </ion-col>
+          <ion-col>
+            {{ item.small_tip1 }}
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="3">
+            <strong>Small titl2:</strong>
+          </ion-col>
+          <ion-col>
+            {{ item.small_titl2 }}
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="3">
+            <strong>Small tip1:</strong>
+          </ion-col>
+          <ion-col>
+            {{ item.small_tip1 }}
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="3">
+            <strong>Middle title:</strong>
+          </ion-col>
+          <ion-col>
+            {{ item.middle_title }}
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="3">
+            <strong>Type:</strong>
+          </ion-col>
+          <ion-col>
+            {{ item.type }}
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="3">
+            <strong>Tags:</strong>
+          </ion-col>
+          <ion-col>
+            {{ item.tags }}
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col size="3">
+            <strong>Active:</strong>
+          </ion-col>
+          <ion-col>
+            <ion-icon *ngIf="item.actvie == 1" name="checkmark-circle-outline" color="success"></ion-icon>
+            <ion-icon *ngIf="item.actvie == 0" name="close" color="danger"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+    <ion-item [ngStyle]="{'border-top': '1px solid #C4C4C4'}">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button fill="clear" (click)="edit(item.lid)">
+              <ion-icon name="create"></ion-icon>
+              Edit
+            </ion-button>
+          </ion-col>
+
+          <ion-col>
+            <ion-button fill="clear" (click)="delete(item.lid)">
+              <ion-icon name="trash"></ion-icon>
+              Delete
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-card>
+</ion-content>
+
+

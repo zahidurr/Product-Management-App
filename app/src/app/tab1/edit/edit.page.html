@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- form -->
+  <form [formGroup]="validationsForm"  (ngSubmit)="onSubmit(validationsForm.value)">
+
+    <ion-item>
+      <ion-label position="floating" color="primary">Title</ion-label>
+      <ion-input type="text" formControlName="title" required></ion-input>
+    </ion-item>
+    <div padding-start>
+      <ng-container *ngFor="let validation of validationMessages.title">
+        <div class="error-message" *ngIf="validationsForm.get('title').hasError(validation.type) && (validationsForm.get('title').dirty || validationsForm.get('title').touched)">
+          <ion-icon name="md-information-circle"></ion-icon> {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <input type="file" name="img"/>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" color="primary">Small Title 1</ion-label>
+      <ion-input type="text" formControlName="sm_title1"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" color="primary">Small Tip 1</ion-label>
+      <ion-textarea type="text" formControlName="sm_tip1"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" color="primary">Small Title 2</ion-label>
+      <ion-input type="text" formControlName="sm_title2"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" color="primary">Small Tip 2</ion-label>
+      <ion-textarea type="text" formControlName="sm_tip2"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" color="primary">Middle Title</ion-label>
+      <ion-input type="text" formControlName="middle_title"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating" color="primary">Type</ion-label>
+      <ion-select formControlName="item_type" interface="popover">
+        <ion-select-option value="A1" selected>A1</ion-select-option>
+        <ion-select-option value="A2">A2</ion-select-option>
+        <ion-select-option value="B1">B1</ion-select-option>
+        <ion-select-option value="B2">B2</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-list>
+      <ion-list-header class="ion-padding-top">
+        <ion-label color="primary">
+          Tags
+        </ion-label>
+      </ion-list-header>
+      <ion-grid>
+        <ion-row class="ion-no-padding">
+          <ion-col class="ion-no-padding">
+            <ion-item>
+              <ion-label>T1</ion-label>
+              <ion-checkbox formControlName="T1" color="primary" slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-no-padding">
+          <ion-col class="ion-no-padding">
+            <ion-item>
+              <ion-label>T2</ion-label>
+              <ion-checkbox formControlName="T2" color="primary" slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-no-padding">
+          <ion-col class="ion-no-padding">
+            <ion-item>
+              <ion-label>T3</ion-label>
+              <ion-checkbox formControlName="T3" color="primary" slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-no-padding">
+          <ion-col class="ion-no-padding">
+            <ion-item>
+              <ion-label>B1</ion-label>
+              <ion-checkbox formControlName="B1" color="primary" slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-no-padding">
+          <ion-col class="ion-no-padding">
+            <ion-item>
+              <ion-label>B2</ion-label>
+              <ion-checkbox formControlName="B2" color="primary" slot="start"></ion-checkbox>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label color="primary">
+            Active
+          </ion-label>
+          <ion-toggle color="primary" formControlName="active" value="1"></ion-toggle>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <div margin-top padding>
+      <ion-button size="medium" expand="full" shape="round" color="primary" type="submit" [disabled]="!validationsForm.valid" tappable>
+        Update
+      </ion-button>
+    </div>
+  </form>
+</ion-content>
