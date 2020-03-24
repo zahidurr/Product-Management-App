@@ -1,10 +1,13 @@
-# Product-Management-App
+# Product Management App
 This application is online-based full-stack system which allows users to manage and track products.
 
 ### Features
+- Sign-in & Sign-out option
+- Product dashboard based on user profile
 - Add, Edit or delete product
 - Add new user
 - Assign user items
+- Profile view
 
 ### Front-end tools
 
@@ -19,4 +22,4 @@ This application is online-based full-stack system which allows users to manage 
 - MySQL
 - Firebase
 - JSON
-- RESTful API model
+- RESTful API
